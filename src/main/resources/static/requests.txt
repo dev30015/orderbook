@@ -1,0 +1,9 @@
+Payload test
+
+{
+    "type": "Buy order",
+    "start_price": "100",
+    "final_price": "300",
+    "order_placed_date": "2000-01-01 13:00:00",
+    "executed":"True"
+}
