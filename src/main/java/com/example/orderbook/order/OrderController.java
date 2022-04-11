@@ -34,18 +34,10 @@ public class OrderController {
 
     @GetMapping("/orders/search")
     Collection<Order> searchOrdersByCriterias(@RequestBody OrderSearchQuery query) {
-        //OrderSearchQuery newQuery = new OrderSearchQuery();
-//        if (query.getOrderPlacedDate().isEmpty()) {
-//            return orderRepository.findOrdersByConditions(query.getType(),query.getStartPrice(),query.getFinalPrice(),"",query.isExecuted());
-//        }
-            //        return orderRepository.findOrdersByConditions(query.getType(),query.getStart_price(),query.getFinal_price(),query.getOrder_placed_date(),query.isExecuted());
+        if (query.getOrderPlacedDate().isEmpty()) {
+            query.setOrderPlacedDate(null);
+        }
         return orderRepository.findOrdersByConditions(query.getType(),query.getStartPrice(),query.getFinalPrice(),query.getOrderPlacedDate(),query.getExecuted());
     }
-
-
-//    @GetMapping("/orders/test")
-//    Collection<Order> test(@RequestBody OrderSearchQuery query) {
-//        return orderRepository.testBy2Conditions(query.getType(),query.getStartPrice());
-//    }
 
 }
